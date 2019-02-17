@@ -15,15 +15,15 @@ class UTSIGDataset(IterableDataset):
 
     @property
     def genuine_per_user(self):
-        return 0
-
-    @property
-    def skilled_per_user(self):
         return 27
 
     @property
-    def simple_per_user(self):
+    def skilled_per_user(self):
         return 42
+
+    @property
+    def simple_per_user(self):
+        return 0
 
     @property
     def maxsize(self):
@@ -36,7 +36,8 @@ class UTSIGDataset(IterableDataset):
         """ Iterate over genuine signatures for the given user"""
 
         all_files = sorted(os.listdir(self.path))
-        user_genuine_files = filter(lambda x: x[4] == 'G', all_files)
+        user_files = filter(lambda x: int(x[1:4]) == int(user), all_files)
+        user_genuine_files = filter(lambda x: x[4] == 'G', user_files)
         for f in user_genuine_files:
             full_path = os.path.join(self.path, f)
             img = imread(full_path, as_gray=True)
@@ -46,24 +47,12 @@ class UTSIGDataset(IterableDataset):
         """ Iterate over skilled forgeries for the given user"""
 
         all_files = sorted(os.listdir(self.path))
-        user_forgery_files = filter(lambda x: x[0:2] == 'cf', all_files)
+        user_files = filter(lambda x: int(x[1:4]) == int(user), all_files)
+        user_forgery_files = filter(lambda x: x[4] == 'F', user_files)
         for f in user_forgery_files:
             full_path = os.path.join(self.path, f)
             img = imread(full_path, as_gray=True)
             yield img_as_ubyte(img), f
-
-    def get_signature(self, user, img_idx, forgery):
-        """ Returns a particular signature (given by user id, img id and
-            whether or not it is a forgery
-        """
-
-        if forgery:
-            prefix = 'cf'
-        else:
-            prefix = 'c'
-        filename = '{}-{:03d}-{:02d}.png'.format(prefix, user, img_idx)
-        full_path = os.path.join(self.path, '{:03d}'.format(user), filename)
-        return img_as_ubyte(imread(full_path, as_gray=True))
 
     def iter_simple_forgery(self, user):
         yield from ()  # No simple forgeries
