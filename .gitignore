@@ -3,3 +3,4 @@
 sigver.egg-info
 .ipynb_checkpoints/
 .vscode/
+data/UTSig_Crop/
