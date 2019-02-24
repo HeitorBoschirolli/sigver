@@ -48,7 +48,7 @@ class UTSIGDataset(IterableDataset):
 
         all_files = sorted(os.listdir(self.path))
         user_files = filter(lambda x: int(x[1:4]) == int(user), all_files)
-        user_forgery_files = filter(lambda x: x[4] == 'F', user_files)
+        user_forgery_files = filter(lambda x: ((x[4] == 'F') and (int(x[5:7]) < 43)), user_files)
         for f in user_forgery_files:
             full_path = os.path.join(self.path, f)
             img = imread(full_path, as_gray=True)
