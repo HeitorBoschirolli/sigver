@@ -1,5 +1,6 @@
 .idea
 *.pyc
+*.npz
 sigver.egg-info
 .ipynb_checkpoints/
 .vscode/
