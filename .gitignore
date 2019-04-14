@@ -5,3 +5,6 @@ sigver.egg-info
 .vscode/
 data/UTSig_Crop/
 models/*
+*.pickle
+*.npz
+*.zip
