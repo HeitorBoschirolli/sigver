@@ -125,6 +125,7 @@ dmypy.json
 .idea
 .vscode/
 data/UTSig_Crop/
+data/bg_utsig/
 models/*
 *.pickle
 *.npz
