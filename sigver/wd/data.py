@@ -5,7 +5,8 @@ from typing import Tuple
 def split_train_test(exp_set: Tuple[np.ndarray, np.ndarray, np.ndarray],
                      num_gen_train: int,
                      num_gen_test: int,
-                     rng: np.random.RandomState) -> Tuple[Tuple[np.ndarray, np.ndarray, np.ndarray],
+                     rng: np.random.RandomState,
+                     filenames) -> Tuple[Tuple[np.ndarray, np.ndarray, np.ndarray],
                                                           Tuple[np.ndarray, np.ndarray, np.ndarray]]:
     """ Splits a set into training and testing. Both sets contains the same users. The
         training set contains only genuine signatures, while the testing set contains
@@ -53,8 +54,9 @@ def split_train_test(exp_set: Tuple[np.ndarray, np.ndarray, np.ndarray],
         user_forgeries = np.flatnonzero((y == user) & (yforg == True))
         test_idx += user_forgeries.tolist()
 
-    exp_train = x[train_idx], y[train_idx], yforg[train_idx]
-    exp_test = x[test_idx], y[test_idx], yforg[test_idx]
+    exp_train = (x[train_idx], y[train_idx],
+                 yforg[train_idx], filenames[train_idx])
+    exp_test = x[test_idx], y[test_idx], yforg[test_idx], filenames[test_idx]
 
     return exp_train, exp_test
 

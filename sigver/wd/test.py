@@ -53,7 +53,8 @@ def main(args):
                                                              num_forg_from_exp=args.forg_from_exp,
                                                              num_forg_from_dev=args.forg_from_dev,
                                                              num_gen_test=args.gen_for_test,
-                                                             rng=rng)
+                                                             rng=rng,
+                                                             filenames=filenames)
         this_eer_u, this_eer = results['all_metrics']['EER_userthresholds'], results['all_metrics']['EER']
         all_results.append(results)
         eer_u_list.append(this_eer_u)

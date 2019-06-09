@@ -166,11 +166,15 @@ def test_all_users(classifier_all_user: Dict[int, sklearn.svm.SVC],
         false acceptance and rejection rates, equal error rates
 
     """
-    xfeatures_test, y_test, yforg_test = exp_test
+    xfeatures_test, y_test, yforg_test, filenames = exp_test
 
     genuinePreds = []
     randomPreds = []
     skilledPreds = []
+
+    genuine_preds_filenames = []
+    random_preds_filenames = []
+    skilled_preds_filenames = []
 
     users = np.unique(y_test)
     for user in users:
@@ -181,6 +185,11 @@ def test_all_users(classifier_all_user: Dict[int, sklearn.svm.SVC],
         test_genuine = xfeatures_test[(y_test == user) & (yforg_test == 0)]
         random_forgeries = xfeatures_test[(y_test != user) & (yforg_test == 0)]
 
+        # Get the filenames for each signature set
+        skilled_forgeries_filenames = filenames[(y_test == user) & (yforg_test == 1)]
+        test_genuine_filenames = filenames[(y_test == user) & (yforg_test == 0)]
+        random_forgeries_filenames = filenames[(y_test != user) & (yforg_test == 0)]
+
         genuinePredUser = model.decision_function(test_genuine)
         skilledPredUser = model.decision_function(skilled_forgeries)
         randomPredUser = model.decision_function(random_forgeries)
@@ -189,13 +198,21 @@ def test_all_users(classifier_all_user: Dict[int, sklearn.svm.SVC],
         skilledPreds.append(skilledPredUser)
         randomPreds.append(randomPredUser)
 
+        genuine_preds_filenames.append(test_genuine_filenames)
+        skilled_preds_filenames.append(skilled_forgeries_filenames)
+        random_preds_filenames.append(random_forgeries_filenames)
+
     # Calculate al metrics (EER, FAR, FRR and AUC)
     all_metrics = metrics.compute_metrics(genuinePreds, randomPreds, skilledPreds, global_threshold)
+    predictions = {'genuinePreds': genuinePreds,
+                   'randomPreds': randomPreds,
+                   'skilledPreds': skilledPreds,
+                   'genuinePredsFilenames': genuine_preds_filenames,
+                   'randomPredsFilenames': random_preds_filenames,
+                   'skilledPredsFilenames': skilled_preds_filenames}
 
     results = {'all_metrics': all_metrics,
-               'predictions': {'genuinePreds': genuinePreds,
-                               'randomPreds': randomPreds,
-                               'skilledPreds': skilledPreds}}
+               'predictions': predictions}
 
     print(all_metrics['EER'], all_metrics['EER_userthresholds'])
     return results
@@ -211,7 +228,8 @@ def train_test_all_users(exp_set: Tuple[np.ndarray, np.ndarray, np.ndarray],
                          num_forg_from_dev: int,
                          num_gen_test: int,
                          global_threshold: float = 0,
-                         rng: np.random.RandomState = np.random.RandomState()) \
+                         rng: np.random.RandomState = np.random.RandomState(),
+                         filenames = None) \
         -> Tuple[Dict[int, sklearn.svm.SVC], Dict]:
     """ Train and test classifiers for every user in the exploitation set,
         and returns the metrics.
@@ -254,9 +272,11 @@ def train_test_all_users(exp_set: Tuple[np.ndarray, np.ndarray, np.ndarray],
         false acceptance and rejection rates, equal error rates
 
     """
-    exp_train, exp_test = data.split_train_test(exp_set, num_gen_train, num_gen_test, rng)
+    exp_train, exp_test = data.split_train_test(exp_set, num_gen_train,
+                                                num_gen_test, rng, filenames)
 
-    classifiers = train_all_users(exp_train, dev_set, svm_type, C, gamma,
+    # the classifiers dont need the filenames
+    classifiers = train_all_users(exp_train[:-1], dev_set, svm_type, C, gamma,
                                   num_forg_from_dev, num_forg_from_exp, rng)
 
     results = test_all_users(classifiers, exp_test, global_threshold)
