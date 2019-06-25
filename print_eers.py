@@ -25,5 +25,6 @@ def main():
         eer = all_metrics['EER_userthresholds']
         print(eer)
 
+
 if __name__ == '__main__':
     main()

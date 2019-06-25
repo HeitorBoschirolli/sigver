@@ -38,7 +38,7 @@ def main(args):
     exp_set = get_subset(data, exp_users)
     dev_set = get_subset(data, dev_users)
 
-    rng = np.random.RandomState(1234)
+    rng = np.random.RandomState()
 
     eer_u_list = []
     eer_list = []

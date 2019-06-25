@@ -1,0 +1,580 @@
+==== metrics for author 0 =====
+accuracy: 0.7692307692307693
+false_positives: 12
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 1 =====
+accuracy: 0.8461538461538461
+false_positives: 8
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 2 =====
+accuracy: 0.8461538461538461
+false_positives: 8
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 3 =====
+accuracy: 0.9807692307692307
+false_positives: 1
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 4 =====
+accuracy: 0.9230769230769231
+false_positives: 1
+false_negatives: 3
+total_signatures: 52
+==== metrics for author 5 =====
+accuracy: 0.9423076923076923
+false_positives: 3
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 6 =====
+accuracy: 0.9807692307692307
+false_positives: 1
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 7 =====
+accuracy: 0.8653846153846154
+false_positives: 7
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 8 =====
+accuracy: 0.7307692307692307
+false_positives: 13
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 9 =====
+accuracy: 0.9038461538461539
+false_positives: 5
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 10 =====
+accuracy: 0.7692307692307693
+false_positives: 12
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 11 =====
+accuracy: 0.75
+false_positives: 13
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 12 =====
+accuracy: 0.9038461538461539
+false_positives: 5
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 13 =====
+accuracy: 0.7307692307692307
+false_positives: 14
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 14 =====
+accuracy: 0.9230769230769231
+false_positives: 4
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 15 =====
+accuracy: 0.9615384615384616
+false_positives: 0
+false_negatives: 2
+total_signatures: 52
+==== metrics for author 16 =====
+accuracy: 0.9230769230769231
+false_positives: 3
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 17 =====
+accuracy: 0.46153846153846156
+false_positives: 28
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 18 =====
+accuracy: 0.75
+false_positives: 13
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 19 =====
+accuracy: 0.7115384615384616
+false_positives: 13
+false_negatives: 2
+total_signatures: 52
+==== metrics for author 20 =====
+accuracy: 0.7307692307692307
+false_positives: 13
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 21 =====
+accuracy: 1.0
+false_positives: 0
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 22 =====
+accuracy: 0.7884615384615384
+false_positives: 11
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 23 =====
+accuracy: 0.6923076923076923
+false_positives: 14
+false_negatives: 2
+total_signatures: 52
+==== metrics for author 24 =====
+accuracy: 0.9423076923076923
+false_positives: 3
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 25 =====
+accuracy: 1.0
+false_positives: 0
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 26 =====
+accuracy: 0.8076923076923077
+false_positives: 8
+false_negatives: 2
+total_signatures: 52
+==== metrics for author 27 =====
+accuracy: 0.9423076923076923
+false_positives: 3
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 28 =====
+accuracy: 0.8461538461538461
+false_positives: 7
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 29 =====
+accuracy: 0.8269230769230769
+false_positives: 9
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 30 =====
+accuracy: 0.9038461538461539
+false_positives: 4
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 31 =====
+accuracy: 0.9423076923076923
+false_positives: 2
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 32 =====
+accuracy: 1.0
+false_positives: 0
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 33 =====
+accuracy: 0.9807692307692307
+false_positives: 1
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 34 =====
+accuracy: 0.8076923076923077
+false_positives: 7
+false_negatives: 3
+total_signatures: 52
+==== metrics for author 35 =====
+accuracy: 0.6730769230769231
+false_positives: 17
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 36 =====
+accuracy: 0.8076923076923077
+false_positives: 10
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 37 =====
+accuracy: 0.9423076923076923
+false_positives: 2
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 38 =====
+accuracy: 0.9423076923076923
+false_positives: 3
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 39 =====
+accuracy: 0.8653846153846154
+false_positives: 7
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 40 =====
+accuracy: 0.7884615384615384
+false_positives: 11
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 41 =====
+accuracy: 0.8269230769230769
+false_positives: 9
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 42 =====
+accuracy: 0.9230769230769231
+false_positives: 4
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 43 =====
+accuracy: 0.8076923076923077
+false_positives: 10
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 44 =====
+accuracy: 0.8461538461538461
+false_positives: 7
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 45 =====
+accuracy: 0.9230769230769231
+false_positives: 4
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 46 =====
+accuracy: 0.8846153846153846
+false_positives: 6
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 47 =====
+accuracy: 0.6346153846153846
+false_positives: 19
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 48 =====
+accuracy: 0.8076923076923077
+false_positives: 7
+false_negatives: 3
+total_signatures: 52
+==== metrics for author 49 =====
+accuracy: 0.8461538461538461
+false_positives: 7
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 50 =====
+accuracy: 0.8269230769230769
+false_positives: 8
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 51 =====
+accuracy: 0.8846153846153846
+false_positives: 6
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 52 =====
+accuracy: 0.8269230769230769
+false_positives: 9
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 53 =====
+accuracy: 0.9038461538461539
+false_positives: 5
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 54 =====
+accuracy: 1.0
+false_positives: 0
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 55 =====
+accuracy: 0.7307692307692307
+false_positives: 13
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 56 =====
+accuracy: 0.75
+false_positives: 9
+false_negatives: 4
+total_signatures: 52
+==== metrics for author 57 =====
+accuracy: 0.9615384615384616
+false_positives: 2
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 58 =====
+accuracy: 0.75
+false_positives: 10
+false_negatives: 3
+total_signatures: 52
+==== metrics for author 59 =====
+accuracy: 0.8269230769230769
+false_positives: 9
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 60 =====
+accuracy: 0.8653846153846154
+false_positives: 7
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 61 =====
+accuracy: 0.9038461538461539
+false_positives: 4
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 62 =====
+accuracy: 0.8846153846153846
+false_positives: 6
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 63 =====
+accuracy: 0.9230769230769231
+false_positives: 3
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 64 =====
+accuracy: 0.7307692307692307
+false_positives: 13
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 65 =====
+accuracy: 0.5576923076923077
+false_positives: 23
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 66 =====
+accuracy: 0.9423076923076923
+false_positives: 3
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 67 =====
+accuracy: 0.7884615384615384
+false_positives: 11
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 68 =====
+accuracy: 0.8461538461538461
+false_positives: 8
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 69 =====
+accuracy: 0.7692307692307693
+false_positives: 11
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 70 =====
+accuracy: 0.9615384615384616
+false_positives: 2
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 71 =====
+accuracy: 0.8076923076923077
+false_positives: 8
+false_negatives: 2
+total_signatures: 52
+==== metrics for author 72 =====
+accuracy: 0.9230769230769231
+false_positives: 2
+false_negatives: 2
+total_signatures: 52
+==== metrics for author 73 =====
+accuracy: 0.9038461538461539
+false_positives: 3
+false_negatives: 2
+total_signatures: 52
+==== metrics for author 74 =====
+accuracy: 0.6538461538461539
+false_positives: 15
+false_negatives: 3
+total_signatures: 52
+==== metrics for author 75 =====
+accuracy: 1.0
+false_positives: 0
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 76 =====
+accuracy: 0.9423076923076923
+false_positives: 3
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 77 =====
+accuracy: 0.8076923076923077
+false_positives: 5
+false_negatives: 5
+total_signatures: 52
+==== metrics for author 78 =====
+accuracy: 0.9423076923076923
+false_positives: 2
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 79 =====
+accuracy: 0.9423076923076923
+false_positives: 0
+false_negatives: 3
+total_signatures: 52
+==== metrics for author 80 =====
+accuracy: 0.8653846153846154
+false_positives: 6
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 81 =====
+accuracy: 0.9807692307692307
+false_positives: 1
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 82 =====
+accuracy: 0.9423076923076923
+false_positives: 2
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 83 =====
+accuracy: 0.8653846153846154
+false_positives: 7
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 84 =====
+accuracy: 0.8846153846153846
+false_positives: 6
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 85 =====
+accuracy: 0.9230769230769231
+false_positives: 1
+false_negatives: 3
+total_signatures: 52
+==== metrics for author 86 =====
+accuracy: 0.9423076923076923
+false_positives: 3
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 87 =====
+accuracy: 0.8269230769230769
+false_positives: 9
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 88 =====
+accuracy: 0.8461538461538461
+false_positives: 6
+false_negatives: 2
+total_signatures: 52
+==== metrics for author 89 =====
+accuracy: 0.9807692307692307
+false_positives: 1
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 90 =====
+accuracy: 0.9423076923076923
+false_positives: 1
+false_negatives: 2
+total_signatures: 52
+==== metrics for author 91 =====
+accuracy: 0.7307692307692307
+false_positives: 13
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 92 =====
+accuracy: 0.9230769230769231
+false_positives: 1
+false_negatives: 3
+total_signatures: 52
+==== metrics for author 93 =====
+accuracy: 0.8076923076923077
+false_positives: 9
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 94 =====
+accuracy: 0.8653846153846154
+false_positives: 7
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 95 =====
+accuracy: 0.9230769230769231
+false_positives: 1
+false_negatives: 3
+total_signatures: 52
+==== metrics for author 96 =====
+accuracy: 0.8461538461538461
+false_positives: 7
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 97 =====
+accuracy: 0.8076923076923077
+false_positives: 8
+false_negatives: 2
+total_signatures: 52
+==== metrics for author 98 =====
+accuracy: 0.6538461538461539
+false_positives: 15
+false_negatives: 3
+total_signatures: 52
+==== metrics for author 99 =====
+accuracy: 0.8461538461538461
+false_positives: 8
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 100 =====
+accuracy: 0.6538461538461539
+false_positives: 18
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 101 =====
+accuracy: 0.5769230769230769
+false_positives: 22
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 102 =====
+accuracy: 0.9038461538461539
+false_positives: 5
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 103 =====
+accuracy: 1.0
+false_positives: 0
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 104 =====
+accuracy: 0.9807692307692307
+false_positives: 1
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 105 =====
+accuracy: 0.7115384615384616
+false_positives: 14
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 106 =====
+accuracy: 0.8653846153846154
+false_positives: 5
+false_negatives: 2
+total_signatures: 52
+==== metrics for author 107 =====
+accuracy: 0.9807692307692307
+false_positives: 0
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 108 =====
+accuracy: 0.8846153846153846
+false_positives: 5
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 109 =====
+accuracy: 0.9230769230769231
+false_positives: 0
+false_negatives: 4
+total_signatures: 52
+==== metrics for author 110 =====
+accuracy: 0.9615384615384616
+false_positives: 2
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 111 =====
+accuracy: 0.8461538461538461
+false_positives: 8
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 112 =====
+accuracy: 0.8461538461538461
+false_positives: 8
+false_negatives: 0
+total_signatures: 52
+==== metrics for author 113 =====
+accuracy: 0.8076923076923077
+false_positives: 9
+false_negatives: 1
+total_signatures: 52
+==== metrics for author 114 =====
+accuracy: 0.9423076923076923
+false_positives: 1
+false_negatives: 2
+total_signatures: 52
+===========================================
+overall accuracy: 0.8543478260869565
+overall false_positives: 779
+overall false_negatives: 92
+overall total_signatures: 5980

@@ -2,9 +2,10 @@
 Prints the accuracy for each user in the first cv split
 """
 import pickle
+from statistics import mean, stdev
 
 
-FILE_NAME = 'tmp.pickle'
+FILE_NAME = 'results_12_gen_utsig_170_242_signet_f.pickle'
 
 def main():
     """
@@ -13,23 +14,74 @@ def main():
     with open(FILE_NAME, 'rb') as results_file:
         results = pickle.load(results_file)
 
-    # first cv split only
-    result = results[0]
+    users = get_users(results)
 
+    for user in users:
+        get_user_metrics(results, user)
+
+def get_user_metrics(results, user, verbose=1):
+    false_positives = list()
+    false_negatives = list()
+    accuracies = list()
+
+    for result in results:
+        predictions = result['predictions']
+        genuine_predictions = predictions['genuinePreds']
+        skilled_predictions = predictions['skilledPreds']
+
+        metrics = get_user_cv_metrics(genuine_predictions,
+                                      skilled_predictions, user)
+
+        false_positives.append(metrics['false_positives'])
+        false_negatives.append(metrics['false_negatives'])
+        accuracies.append(metrics['accuracy'])
+
+    acc_mean = mean(accuracies)
+    acc_stdev = stdev(accuracies) if len(accuracies) > 1 else None
+    # fp_mean = mean(false_positives)
+    # fp_stdev = stdev(false_positives)
+    # fn_mean = mean(false_negatives)
+    # fn_stdev = mean(false_negatives)
+
+    if verbose == 1:
+        print_vars(f'user {user} accuracies', acc_mean=acc_mean,
+                   acc_stdev=acc_stdev)
+
+
+def get_user_cv_metrics(genuine_predictions, skilled_predictions, user):
+    metrics = dict()
+
+    true_positives, false_negatives = pos_and_neg(genuine_predictions[user])
+    false_positives, true_negatives = pos_and_neg(skilled_predictions[user])
+    positives = true_positives + false_negatives
+    negatives = true_negatives + false_positives
+    accuracy = (true_positives + true_negatives) / (positives + negatives)
+
+    metrics['true_positives'] = true_positives
+    metrics['true_negatives'] = true_negatives
+    metrics['false_positives'] = false_positives
+    metrics['false_negatives'] = false_negatives
+    metrics['accuracy'] = accuracy
+
+    return metrics
+
+def get_users(results):
+    result = results[0]
+    predictions = result['predictions']
+    n_users = len(predictions['genuinePreds'])
+    return list(range(0, n_users))
+
+def cv_stats(result):
     predictions = result['predictions']
     genuine_predictions = predictions['genuinePreds']
     skilled_predictions = predictions['skilledPreds']
 
     metrics = stats(genuine_predictions, skilled_predictions, True)
 
-    accuracy = find_accuracy(true_positives=metrics['true_positives'],
-                             true_negatives=metrics['true_negatives'],
-                             false_positives=metrics['false_positives'],
-                             false_negatives=metrics['false_negatives'])
-    print('========== ========== ==========')
-    print(f'overall accuracy: {accuracy}')
-    print(f'overall false_positives: {metrics["false_positives"]}')
-    print(f'overall false_negatives: {metrics["false_negatives"]}')
+    return find_accuracy(true_positives=metrics['true_positives'],
+                         true_negatives=metrics['true_negatives'],
+                         false_positives=metrics['false_positives'],
+                         false_negatives=metrics['false_negatives'])
 
 def stats(genuine_predictions, skilled_predictions, verbose=1):
     """
