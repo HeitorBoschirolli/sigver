@@ -8,7 +8,7 @@ import sklearn.metrics as sk_metrics
 from print_accs import print_vars
 from sigver.wd.metrics import calculate_EER_user_thresholds
 
-FILE_NAME = 'results_5_gen_utsig_170_242_signet.pickle'
+FILE_NAME = 'results_12_gen_utsig_170_242_signet.pickle'
 
 
 def main():
@@ -40,14 +40,19 @@ def main():
         stdevs.append(stdev(eers))
 
     metrics = sorted(zip(means, stdevs, users), key=lambda x: x[0])
+    means_mean = list()
 
     for split_mean, split_stdev, user in metrics:
+        means_mean.append(split_mean)
         user_metrics = {'eer_mean': split_mean, 'eer_stdev': split_stdev}
-        print_vars(title=f'user {user} metrics', **user_metrics)
+        # user + 1 because the user array id starts at 0 and the user dataset
+        # id starts at 1
+        print_vars(title=f'user {user + 1} metrics', **user_metrics)
 
     print_vars(title='dataset metrics',
                **calculate_dataset_eer(genuine_predictions,
                                        skilled_predictions))
+    print_vars(title='mean\'s mean', means_mean=sum(means_mean)/len(means_mean))
 
 
 def calculate_dataset_eer(genuine_predictions, skilled_predictions):
