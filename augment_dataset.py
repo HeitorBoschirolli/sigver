@@ -1,6 +1,7 @@
 """ augment utsig dataset """
 import os
 import random
+import math
 
 import numpy as np
 from skimage.io import imread, imsave
@@ -9,13 +10,14 @@ from skimage.util import pad
 
 LOAD_DIR = 'data/UTSig_Crop'
 SAVE_DIR = 'data/augmented_utsig'
-TRANSLATION = 0.1
+TRANSLATION = 0.2
 AUGMENTING_FACTOR = 3
 
 
 def main():
     """ main function """
     filenames = os.listdir(LOAD_DIR)
+    filenames = filter(lambda x: x[4] == 'G', filenames)
     for filename in filenames:
         sig = load_signature(filename)
         augmented_signatures = [augment(sig) for _ in range(AUGMENTING_FACTOR)]
@@ -34,14 +36,14 @@ def load_signature(filename):
 
 def augment(signature):
     """ augment a single signature """
-    max_row_padding = int(TRANSLATION * signature.shape[0])
-    max_col_padding = int(TRANSLATION * signature.shape[1])
+    max_row_padding = math.ceil(TRANSLATION * signature.shape[0])
+    max_col_padding = math.ceil(TRANSLATION * signature.shape[1])
 
     top = random.randint(0, max_row_padding)
-    bot = random.randint(0, max_row_padding)
+    bot = max_row_padding - top
 
     left = random.randint(0, max_col_padding)
-    right = random.randint(0, max_col_padding)
+    right = max_col_padding - left
 
     return pad(signature, ((top, bot), (left, right)),
                'constant', constant_values=255)
