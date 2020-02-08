@@ -3,14 +3,13 @@ import os
 import random
 import math
 
-import numpy as np
 from skimage.io import imread, imsave
 from skimage.util import pad
 
 
-LOAD_DIR = 'data/UTSig_Crop'
-SAVE_DIR = 'data/augmented_utsig'
-TRANSLATION = 0.2
+LOAD_DIR = 'data/mini_dataset'
+SAVE_DIR = 'data/mini_augmented_dataset'
+TRANSLATION = 0.5
 AUGMENTING_FACTOR = 3
 
 

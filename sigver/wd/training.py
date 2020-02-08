@@ -220,6 +220,7 @@ def test_all_users(classifier_all_user: Dict[int, sklearn.svm.SVC],
 
 def train_test_all_users(exp_set: Tuple[np.ndarray, np.ndarray, np.ndarray],
                          dev_set: Tuple[np.ndarray, np.ndarray, np.ndarray],
+                         aug_exp_set: Tuple[np.ndarray, np.ndarray, np.ndarray],
                          svm_type: str,
                          C: float,
                          gamma: float,
@@ -272,7 +273,7 @@ def train_test_all_users(exp_set: Tuple[np.ndarray, np.ndarray, np.ndarray],
         false acceptance and rejection rates, equal error rates
 
     """
-    exp_train, exp_test = data.split_train_test(exp_set, num_gen_train,
+    exp_train, exp_test = data.split_train_test(exp_set, aug_exp_set, num_gen_train,
                                                 num_gen_test, rng, filenames)
 
     # the classifiers dont need the filenames

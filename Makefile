@@ -13,7 +13,6 @@ no_background: results_5_gen_utsig_170_242_signet.pickle \
 		 results_12_gen_utsig_170_242_signet.pickle \
 		 results_12_gen_utsig_170_242_signet_f.pickle
 
-# preprocessing
 .PHONY: 5_gen
 5_gen: results_5_gen_utsig_170_242_signet.pickle \
 	   results_5_gen_utsig_170_242_signet_f.pickle
@@ -35,7 +34,8 @@ results_5_gen_utsig_170_242_signet.pickle: utsig_170_242.npz
 	--forg-from_dev=0 \
 	--forg-from_exp=5 \
 	--gen-for-train=5 \
-	--gen-for-test=22
+	--gen-for-test=22 \
+	--augmented-path augmented_utsig_170_242.npz
 
 results_5_gen_utsig_170_242_signet_f.pickle: utsig_170_242.npz
 	python -m sigver.wd.test -m signet \
@@ -45,7 +45,9 @@ results_5_gen_utsig_170_242_signet_f.pickle: utsig_170_242.npz
 	--forg-from_dev=0 \
 	--forg-from_exp=5 \
 	--gen-for-train=5 \
-	--gen-for-test=22
+	--gen-for-test=22 \
+	--augmented-path augmented_utsig_170_242.npz
+
 
 results_10_gen_utsig_170_242_signet.pickle: utsig_170_242.npz
 	python -m sigver.wd.test -m signet --model-path models/signet.pth \
@@ -55,7 +57,9 @@ results_10_gen_utsig_170_242_signet.pickle: utsig_170_242.npz
 	--forg-from_dev=0 \
 	--forg-from_exp=10 \
 	--gen-for-train=10 \
-	--gen-for-test=17
+	--gen-for-test=17 \
+	--augmented-path augmented_utsig_170_242.npz
+
 
 results_10_gen_utsig_170_242_signet_f.pickle: utsig_170_242.npz
 	python -m sigver.wd.test -m signet \
@@ -65,7 +69,9 @@ results_10_gen_utsig_170_242_signet_f.pickle: utsig_170_242.npz
 	--forg-from_dev=0 \
 	--forg-from_exp=10 \
 	--gen-for-train=10 \
-	--gen-for-test=17
+	--gen-for-test=17 \
+	--augmented-path augmented_utsig_170_242.npz
+
 
 results_12_gen_utsig_170_242_signet.pickle: utsig_170_242.npz
 	python -m sigver.wd.test -m signet --model-path models/signet.pth \
@@ -75,7 +81,9 @@ results_12_gen_utsig_170_242_signet.pickle: utsig_170_242.npz
 	--forg-from_dev=0 \
 	--forg-from_exp=12 \
 	--gen-for-train=12 \
-	--gen-for-test=15
+	--gen-for-test=15 \
+	--augmented-path augmented_utsig_170_242.npz
+
 
 results_12_gen_utsig_170_242_signet_f.pickle: utsig_170_242.npz
 	python -m sigver.wd.test -m signet \
@@ -85,11 +93,19 @@ results_12_gen_utsig_170_242_signet_f.pickle: utsig_170_242.npz
 	--forg-from_dev=0 \
 	--forg-from_exp=12 \
 	--gen-for-train=12 \
-	--gen-for-test=15
+	--gen-for-test=15 \
+	--augmented-path augmented_utsig_170_242.npz
 
+
+# preprocessing
 utsig_170_242.npz: 
 	python -m sigver.preprocessing.process_dataset --dataset utsig \
 	--path data/UTSig_Crop --save-path utsig_170_242.npz
+
+# augmented data preprocessing
+augmented_utsig_170_242.npz: 
+	python -m sigver.preprocessing.process_dataset --dataset augmented_utsig \
+	--path data/augmented_utsig --save-path augmented_utsig_170_242.npz
 
 ###################
 # Get the results for images with background

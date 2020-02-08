@@ -8,7 +8,7 @@ import sklearn.metrics as sk_metrics
 from print_accs import print_vars
 from sigver.wd.metrics import calculate_EER_user_thresholds
 
-FILE_NAME = 'results_12_gen_utsig_170_242_signet.pickle'
+FILE_NAME = 'tmp.pickle'
 
 
 def main():

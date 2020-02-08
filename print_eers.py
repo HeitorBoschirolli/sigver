@@ -3,7 +3,7 @@ Prints the EER for all users
 """
 import pickle
 
-FILE_NAME = 'tmp.pickle'
+FILE_NAME = 'results_12_gen_utsig_170_242_signet_f.pickle'
 
 
 def main():

@@ -1,4 +1,4 @@
-import math
+""" Reduced version of the utsig dataset (used for testing) """
 import os
 
 from skimage import img_as_ubyte
@@ -7,13 +7,13 @@ from skimage.io import imread
 from sigver.datasets.base import IterableDataset
 
 
-class UTSIGDataset(IterableDataset):
+class MiniUTSIGDataset(IterableDataset):
     """ Helper class to load the UTSig dataset
     """
 
     def __init__(self, path):
         self.path = path
-        self.users = list(range(1, 116))
+        self.users = list(range(1, 3))
 
     @property
     def genuine_per_user(self):
@@ -29,7 +29,7 @@ class UTSIGDataset(IterableDataset):
 
     @property
     def maxsize(self):
-        return (1726, 3287)
+        return 4314, 4353
 
     def get_user_list(self):
         return self.users
@@ -54,7 +54,7 @@ class UTSIGDataset(IterableDataset):
         for f in user_forgery_files:
             full_path = os.path.join(self.path, f)
             img = imread(full_path, as_gray=True)
-            yield img_as_ubyte(img) / 255, f
+            yield img_as_ubyte(img), f
 
     def iter_simple_forgery(self, user):
         yield from ()  # No simple forgeries

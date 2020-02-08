@@ -30,13 +30,35 @@ def main(args):
         return base_model(input)
 
     x, y, yforg, user_mapping, filenames = load_dataset(args.data_path)
-
+    sort_permutation = filenames.argsort()
+    x = x[sort_permutation]
+    y = y[sort_permutation]
+    yforg = yforg[sort_permutation]
+    filenames = filenames[sort_permutation]
     features = extract_features(x, process_fn, args.batch_size, args.input_size)
 
     data = (features, y, yforg)
 
     exp_set = get_subset(data, exp_users)
     dev_set = get_subset(data, dev_users)
+
+    # calculate mapping from signatures to augmented signatures
+    if args.augmented_path:
+        aug_x, aug_y, aug_yforg, _, aug_filenames = load_dataset(args.augmented_path)
+        sort_permutation = aug_filenames.argsort()
+        aug_x = aug_x[sort_permutation]
+        aug_y = aug_y[sort_permutation]
+        aug_yforg = aug_yforg[sort_permutation]
+        aug_filenames = aug_filenames[sort_permutation]
+        aug_features = extract_features(aug_x, process_fn,
+                                        args.batch_size, args.input_size)
+
+        aug_data = (aug_features, aug_y, aug_yforg)
+
+        aug_exp_set = get_subset(aug_data, exp_users)
+    else:
+        aug_exp_set = None
+        aug_mapping = None
 
     rng = np.random.RandomState()
 
@@ -46,6 +68,7 @@ def main(args):
     for _ in range(args.folds):
         classifiers, results = training.train_test_all_users(exp_set,
                                                              dev_set,
+                                                             aug_exp_set,
                                                              svm_type=args.svm_type,
                                                              C=args.svm_c,
                                                              gamma=args.svm_gamma,
@@ -76,6 +99,7 @@ if __name__ == '__main__':
                         help='Model architecture', dest='model')
     parser.add_argument('--model-path', required=True)
     parser.add_argument('--data-path', required=True)
+    parser.add_argument('--augmented-path', default=None)
     parser.add_argument('--save-path')
     parser.add_argument('--input-size', nargs=2, default=(150, 220))
 

@@ -1,5 +1,6 @@
-import math
+""" Helper class for the augmented version of the utsig datset """
 import os
+import math
 
 from skimage import img_as_ubyte
 from skimage.io import imread
@@ -7,7 +8,7 @@ from skimage.io import imread
 from sigver.datasets.base import IterableDataset
 
 
-class UTSIGDataset(IterableDataset):
+class AugmentedUTSIGDataset(IterableDataset):
     """ Helper class to load the UTSig dataset
     """
 
@@ -17,11 +18,11 @@ class UTSIGDataset(IterableDataset):
 
     @property
     def genuine_per_user(self):
-        return 27
+        return 27 * 3
 
     @property
     def skilled_per_user(self):
-        return 45
+        return 0
 
     @property
     def simple_per_user(self):
@@ -43,18 +44,10 @@ class UTSIGDataset(IterableDataset):
         for f in user_genuine_files:
             full_path = os.path.join(self.path, f)
             img = imread(full_path, as_gray=True)
-            yield img_as_ubyte(img), f
+            yield img_as_ubyte(img) / 255, f
 
     def iter_forgery(self, user):
-        """ Iterate over skilled forgeries for the given user"""
-
-        all_files = sorted(os.listdir(self.path))
-        user_files = filter(lambda x: int(x[1:4]) == int(user), all_files)
-        user_forgery_files = filter(lambda x: x[4] == 'F', user_files)
-        for f in user_forgery_files:
-            full_path = os.path.join(self.path, f)
-            img = imread(full_path, as_gray=True)
-            yield img_as_ubyte(img) / 255, f
+        yield from() # no skilled forgeries
 
     def iter_simple_forgery(self, user):
         yield from ()  # No simple forgeries

@@ -3,11 +3,13 @@ from typing import Tuple
 
 
 def split_train_test(exp_set: Tuple[np.ndarray, np.ndarray, np.ndarray],
+                     aug_exp_set: Tuple[np.ndarray, np.ndarray, np.ndarray],
                      num_gen_train: int,
                      num_gen_test: int,
                      rng: np.random.RandomState,
-                     filenames) -> Tuple[Tuple[np.ndarray, np.ndarray, np.ndarray],
-                                                          Tuple[np.ndarray, np.ndarray, np.ndarray]]:
+                     filenames
+                     ) -> Tuple[Tuple[np.ndarray, np.ndarray, np.ndarray],
+                                Tuple[np.ndarray, np.ndarray, np.ndarray]]:
     """ Splits a set into training and testing. Both sets contains the same users. The
         training set contains only genuine signatures, while the testing set contains
         genuine signatures and forgeries. Note that the number of genuine signatures for
@@ -36,8 +38,17 @@ def split_train_test(exp_set: Tuple[np.ndarray, np.ndarray, np.ndarray],
     x, y, yforg = exp_set
     users = np.unique(y)
 
+    # if it is not None
+    if aug_exp_set:
+        aug_x, aug_y, aug_yforg = aug_exp_set
+
+        # Sanity checks
+        assert (aug_yforg == 0).all()
+        assert (users == np.unique(aug_y)).all()
+
     train_idx = []
     test_idx = []
+    aug_train_idx = []
 
     for user in users:
         user_genuines = np.flatnonzero((y == user) & (yforg == False))
@@ -50,12 +61,24 @@ def split_train_test(exp_set: Tuple[np.ndarray, np.ndarray, np.ndarray],
 
         train_idx += user_train_idx.tolist()
         test_idx += user_test_idx.tolist()
+        # if it is not None
+        if aug_exp_set:
+            for i in user_train_idx:
+                for j in range(0, 3):
+                    aug_train_idx.append((i - 45 * (user + 1)) * 3 + j)
 
         user_forgeries = np.flatnonzero((y == user) & (yforg == True))
         test_idx += user_forgeries.tolist()
 
-    exp_train = (x[train_idx], y[train_idx],
-                 yforg[train_idx], filenames[train_idx])
+    # if it is not None
+    if aug_exp_set:
+        exp_train = (np.concatenate([x[train_idx], aug_x[aug_train_idx]]),
+                     np.concatenate([y[train_idx], aug_y[aug_train_idx]]),
+                     np.concatenate([yforg[train_idx], aug_yforg[aug_train_idx]]),
+                     filenames[train_idx])
+    else:
+        exp_train = (x[train_idx], y[train_idx],
+                     yforg[train_idx], filenames[train_idx])
     exp_test = x[test_idx], y[test_idx], yforg[test_idx], filenames[test_idx]
 
     return exp_train, exp_test
